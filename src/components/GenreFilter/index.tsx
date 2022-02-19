@@ -1,4 +1,5 @@
-import { Box, Content, Toggle} from "./styles"
+import { useState } from "react"
+import { Box, Content, Label, Toggle} from "./styles"
 
 const genres = 
 ["Ação", "Aventura", 'Animação', 'Comédia', 'Crime', 'Documentário', 'Drama', 'Família']
@@ -6,13 +7,16 @@ const genres =
 
 
 export function GenreFilter() {
+  const [ toggleGenre, setToggleGenre] = useState(false)
   return (
     <Box>
       <Content>
-        <h3>Filtrar por:</h3>
+        <Label>Filtrar por:</Label>
         <div style={{display: 'flex', flexDirection: 'row'}}>
           {genres.map(genre => {return (
-            <Toggle>{genre}</Toggle>
+            <Toggle isActive={toggleGenre}>
+              {genre}
+            </Toggle>
           )})}
         </div>
       </Content>

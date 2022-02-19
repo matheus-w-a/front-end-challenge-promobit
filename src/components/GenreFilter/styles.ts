@@ -1,5 +1,6 @@
 import { styled } from '../../styles/stitches.config';
 
+
 export const Box = styled('div', {
   display: 'flex',
   alignItems: 'center',
@@ -32,4 +33,13 @@ export const Toggle = styled('button', {
   cursor: 'pointer',
   '&[data-state=on]': { backgroundColor: '#fff999', color: '#000'},
   '&:focus': { boxShadow: `0 0 0 2px black` },
+  variants: {
+    isActive: {      violet: { backgroundColor: 'blueviolet' },
+    gray: { backgroundColor: 'gainsboro' },}
+  }
 });
+
+export const Label = styled('h3', {
+  fontFamily: '$primary',
+  fontSize: 14
+})

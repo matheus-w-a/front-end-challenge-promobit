@@ -27,6 +27,7 @@ export const {
       7: '48px',
       8: '56px',
     },
+    fonts: { primary:  'Roboto, sans-serif' }
   },
 
   media: {
