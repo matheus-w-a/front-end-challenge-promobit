@@ -33,9 +33,11 @@ export const Toggle = styled('button', {
   cursor: 'pointer',
   '&[data-state=on]': { backgroundColor: '#fff999', color: '#000'},
   '&:focus': { boxShadow: `0 0 0 2px black` },
-  variants: {
-    isActive: {      violet: { backgroundColor: 'blueviolet' },
-    gray: { backgroundColor: 'gainsboro' },}
+  variants:{
+    isActive: {
+      0: { backgroundColor: 'blueviolet' },
+      1: { backgroundColor: 'gainsboro' },
+    }
   }
 });
 
