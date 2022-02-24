@@ -1,12 +1,20 @@
-import { useState } from "react"
-import { useGenreList } from "../../hooks/useGenres"
+import { useEffect, useState } from "react"
+import { useGenres } from "../../hooks/useGenres"
 import { Box, Content, Label, Toggle} from "./styles"
 
-export function GenreFilter() {
+type Genre = {
+  id: number;
+  name: string;
+}
+
+type GenreFilterProps = {
+  genres : Genre[];
+  isLoading: boolean;
+}
+
+export function GenreFilter({genres, isLoading}: GenreFilterProps) {
   const [ toggleGenre, setToggleGenre] = useState(false)
-  
-  const {data : genres} = useGenreList()
-  console.log(genres)
+  console.log(isLoading)
 
   function handleGenreSelect() {
     return "hello world"
@@ -15,12 +23,14 @@ export function GenreFilter() {
     <Box>
       <Content>
         <Label>Filtrar por:</Label>
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-          {/* {genres.map(genre => {return (
-            <Toggle onClick={()=>handleGenreSelect()} isActive={1}>
-              {genre}
-            </Toggle>
-          )})} */}
+        <div style={{display: 'flex', flexDirection: 'row', maxWidth: 600}}>
+          {isLoading ? "ola" : genres.map(genre => {
+            return (
+              <Toggle key={genre.id} onClick={()=>handleGenreSelect()} isActive={0}>
+                {genre.name}
+              </Toggle>
+            )
+          })}
         </div>
       </Content>
     </Box>

@@ -17,13 +17,14 @@ export const Content = styled('div', {
 })
 
 export const Toggle = styled('button', {
+  fontFamily: '$primary !important' ,
   all: 'unset',
   backgroundColor: 'white',
   color: '$gray500',
   height: 40,
   borderRadius: 4,
   display: 'flex',
-  fontSize: 15,
+  fontSize: 14,
   lineHeight: 1,
   alignItems: 'center',
   justifyContent: 'center',
@@ -31,11 +32,10 @@ export const Toggle = styled('button', {
   px: 16,
   boxShadow: `0 2px 10px`,
   cursor: 'pointer',
-  '&[data-state=on]': { backgroundColor: '#fff999', color: '#000'},
   '&:focus': { boxShadow: `0 0 0 2px black` },
   variants:{
     isActive: {
-      0: { backgroundColor: 'blueviolet' },
+      0: { backgroundColor: '#ffffff' },
       1: { backgroundColor: 'gainsboro' },
     }
   }
