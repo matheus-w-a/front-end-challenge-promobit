@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useMoviesContext } from "../../contexts/moviesContext"
 import { useGenres } from "../../hooks/useGenres"
 import { Box, Content, Label, Toggle} from "./styles"
 
@@ -9,24 +10,38 @@ type Genre = {
 
 type GenreFilterProps = {
   genres : Genre[];
-  isLoading: boolean;
+  isError: boolean;
+  selectedGenres: number[];
+  setSelectedGenres: (array : number[]) => void;
 }
 
-export function GenreFilter({genres, isLoading}: GenreFilterProps) {
+export function GenreFilter() {
+  const { genresList, selectedGenres, setSelectedGenres, isError } = useMoviesContext()
   const [ toggleGenre, setToggleGenre] = useState(false)
-  console.log(isLoading)
 
-  function handleGenreSelect() {
-    return "hello world"
+  function handleGenreSelect(id : number) {
+    const genres = [...selectedGenres]
+
+    if(!selectedGenres.includes(id)) {
+      genres.push(id)
+      setSelectedGenres(genres)
+
+    } else {
+      const index = genres.indexOf(id)
+      genres.splice(index, 1)
+      setSelectedGenres(genres)
+
+    }
   }
+  
   return (
     <Box>
       <Content>
         <Label>Filtrar por:</Label>
         <div style={{display: 'flex', flexDirection: 'row', maxWidth: 600}}>
-          {isLoading ? "ola" : genres.map(genre => {
+          {isError ? "ola" : genresList.map(genre => {
             return (
-              <Toggle key={genre.id} onClick={()=>handleGenreSelect()} isActive={0}>
+              <Toggle key={genre.id} onClick={()=>handleGenreSelect(genre.id)} isActive={0}>
                 {genre.name}
               </Toggle>
             )

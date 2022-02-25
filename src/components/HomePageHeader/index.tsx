@@ -12,16 +12,12 @@ type GenreProps = {
 }
 
 export function HomePageHeader() {
-  const { moviesList, genresList, isLoading } = useMoviesContext()
   return (
     <Box>
       <Banner />
       <Content>
         <Title>Milhões de filmes, séries e pessoas para descobrir. Explore já.</Title>
-        <GenreFilter 
-          genres={genresList as GenreProps[]}
-          isLoading={isLoading}
-        />
+        <GenreFilter/>
       </Content>
     </Box>
   )

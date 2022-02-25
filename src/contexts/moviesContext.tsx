@@ -4,7 +4,7 @@ import { useMovies } from '../hooks/useMovies';
 
 type Genre = {
   id: number;
-  name: string;
+  name?: string;
 }
 
 type Movie = {
@@ -33,7 +33,9 @@ interface MoviesProviderProps {
 interface MoviesContextData {
   moviesList:  Movie[]; 
   genresList: Genre[];
-  isLoading: boolean;
+  isError: boolean;
+  selectedGenres: number[];
+  setSelectedGenres: (array : number[]) => void;
 }
 
 const MoviesContext = createContext<MoviesContextData>(
@@ -41,11 +43,36 @@ const MoviesContext = createContext<MoviesContextData>(
 );
 
 export function MoviesProvider({children}: MoviesProviderProps) {
-  const { data : genresList, isLoading, isError } = useGenres()
-  const { data } = useMovies()
-  const moviesList = data?.data.results as any
+  const { data : genresData, isError } = useGenres()
+  const { data : moviesData, isLoading } = useMovies()
+  const [moviesList, setMoviesList] = useState([])
+  const [genresList, setGenresList] = useState([]) as any
+  const [selectedGenres, setSelectedGenres] = useState([])
+
+  if(!isLoading && genresList.length == 0) {
+    setMoviesList(moviesData?.data.results)
+    const moviesGenres = moviesList.reduce((acc : any, value : Movie) => { 
+      value.genre_ids.forEach(genre => {
+        if (!acc.includes(genre)) {
+          acc.push(genre)
+        }
+      })
+      return acc
+    }, [])
+
+    if(!isError) {
+      const genres = genresData.reduce((acc : any, genre : Genre) => {
+        if(moviesGenres.includes(genre.id)) {
+          acc.push(genre)
+        }
+        return acc
+      }, [])
+      setGenresList(genres)
+    }
+  }
+
   return (
-    <MoviesContext.Provider value={{ moviesList, genresList, isLoading } as any} > 
+    <MoviesContext.Provider value={{ moviesList, genresList, isError, selectedGenres, setSelectedGenres } as any} > 
       {children}
     </MoviesContext.Provider>
   )

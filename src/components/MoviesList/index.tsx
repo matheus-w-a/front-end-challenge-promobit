@@ -10,10 +10,10 @@ export function MoviesList() {
       moviesList.map(movie =>{
         const banner = movie.poster_path ? movie.poster_path : ""
         return (
-          <Movie>
+          <Movie key={movie.id}>
             <Poster src={`https://image.tmdb.org/t/p/w500${banner}`} alt={movie.original_title}/>
             <Title>
-              {movie.original_title}
+              {movie.title}
             </Title>
             <ReleaseDate>
               {movie.release_date}

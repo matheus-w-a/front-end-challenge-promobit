@@ -13,7 +13,6 @@ async function fetchMovieGenres() {
       language: 'pt-BR'
     }
   })
-  console.log(response)
   const genreList = await response.data.genres
   console.log(genreList)
 
@@ -21,5 +20,5 @@ async function fetchMovieGenres() {
 }
 
 export function useGenres() {
-  return useQuery<Genre[], Error>('list-of-genres', () => fetchMovieGenres())
+  return useQuery('list-of-genres', () => fetchMovieGenres())
 }
