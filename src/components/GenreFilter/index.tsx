@@ -16,8 +16,7 @@ type GenreFilterProps = {
 }
 
 export function GenreFilter() {
-  const { genresList, selectedGenres, setSelectedGenres, isError } = useMoviesContext()
-  const [ toggleGenre, setToggleGenre] = useState(false)
+  const { genresList, selectedGenres, setSelectedGenres, isGenresLoading } = useMoviesContext()
 
   function handleGenreSelect(id : number) {
     const genres = [...selectedGenres]
@@ -33,13 +32,13 @@ export function GenreFilter() {
 
     }
   }
-  
+
   return (
     <Box>
       <Content>
         <Label>Filtrar por:</Label>
         <div style={{display: 'flex', flexDirection: 'row', maxWidth: 600}}>
-          {isError ? "ola" : genresList.map(genre => {
+          {isGenresLoading ? "Carregando" : genresList.map(genre => {
             return (
               <Toggle key={genre.id} onClick={()=>handleGenreSelect(genre.id)} isActive={0}>
                 {genre.name}

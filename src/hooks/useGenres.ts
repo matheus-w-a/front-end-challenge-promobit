@@ -14,7 +14,6 @@ async function fetchMovieGenres() {
     }
   })
   const genreList = await response.data.genres
-  console.log(genreList)
 
   return genreList
 }

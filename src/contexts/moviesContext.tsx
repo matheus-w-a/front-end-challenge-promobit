@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, ReactNode, useContext } from 'react';
+import { createContext, useState, ReactNode, useContext, useEffect } from 'react';
 import { useGenres } from '../hooks/useGenres';
 import { useMovies } from '../hooks/useMovies';
 
@@ -33,7 +33,8 @@ interface MoviesProviderProps {
 interface MoviesContextData {
   moviesList:  Movie[]; 
   genresList: Genre[];
-  isError: boolean;
+  isGenresLoading: boolean;
+  isMoviesLoading: boolean;
   selectedGenres: number[];
   setSelectedGenres: (array : number[]) => void;
 }
@@ -43,36 +44,40 @@ const MoviesContext = createContext<MoviesContextData>(
 );
 
 export function MoviesProvider({children}: MoviesProviderProps) {
-  const { data : genresData, isError } = useGenres()
-  const { data : moviesData, isLoading } = useMovies()
-  const [moviesList, setMoviesList] = useState([])
-  const [genresList, setGenresList] = useState([]) as any
-  const [selectedGenres, setSelectedGenres] = useState([])
+  const { data : genresList, isLoading : isGenresLoading } = useGenres()
+  const { data : moviesData, isLoading : isMoviesLoading } = useMovies()
+  const [moviesList, setMoviesList] = useState<Movie[]>([])
+  const [selectedGenres, setSelectedGenres] = useState<Number[]>([])
 
-  if(!isLoading && genresList.length == 0) {
-    setMoviesList(moviesData?.data.results)
-    const moviesGenres = moviesList.reduce((acc : any, value : Movie) => { 
-      value.genre_ids.forEach(genre => {
-        if (!acc.includes(genre)) {
-          acc.push(genre)
-        }
-      })
-      return acc
-    }, [])
-
-    if(!isError) {
-      const genres = genresData.reduce((acc : any, genre : Genre) => {
-        if(moviesGenres.includes(genre.id)) {
-          acc.push(genre)
-        }
-        return acc
-      }, [])
-      setGenresList(genres)
-    }
+  if(!isMoviesLoading && moviesList.length === 0) {
+    setMoviesList(moviesData)
   }
 
+  useEffect(() => {
+    const selectedMoviesByGenres = moviesList.reduce((acc : Movie[], movie : Movie) => {
+      function checkIfGenresIncludes() {        
+        return movie.genre_ids.some((id) => {
+          return selectedGenres.includes(id)
+        })
+      }      
+      if(checkIfGenresIncludes()) {
+        acc.push(movie)
+      }
+      return acc
+    }, [])
+    setMoviesList(selectedMoviesByGenres)
+  }, [selectedGenres])
+
   return (
-    <MoviesContext.Provider value={{ moviesList, genresList, isError, selectedGenres, setSelectedGenres } as any} > 
+    <MoviesContext.Provider 
+      value={{ 
+        moviesList, 
+        genresList, 
+        isGenresLoading, 
+        isMoviesLoading, 
+        selectedGenres, 
+        setSelectedGenres 
+      } as any} > 
       {children}
     </MoviesContext.Provider>
   )
