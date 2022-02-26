@@ -15,7 +15,8 @@ export const {
       gray400: '#646464',
       gray500: '#323232',
       purple400: '#5C16C5',
-      purple500: '#2D0C5E'
+      purple500: '#2D0C5E',
+      orange400: '#D18000'
     },
     space: {
       1: '4px',

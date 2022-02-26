@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode, useContext, useEffect } from 'react';
 import { useGenres } from '../hooks/useGenres';
-import { useMovies } from '../hooks/useMovies';
+import { useMovies } from '../hooks/usePopularMovies';
 
 type Genre = {
   id: number;
@@ -54,18 +54,22 @@ export function MoviesProvider({children}: MoviesProviderProps) {
   }
 
   useEffect(() => {
-    const selectedMoviesByGenres = moviesList.reduce((acc : Movie[], movie : Movie) => {
-      function checkIfGenresIncludes() {        
-        return movie.genre_ids.some((id) => {
-          return selectedGenres.includes(id)
-        })
-      }      
-      if(checkIfGenresIncludes()) {
-        acc.push(movie)
-      }
-      return acc
-    }, [])
-    setMoviesList(selectedMoviesByGenres)
+    if(moviesData) {
+      const selectedMoviesByGenres = moviesData.reduce((acc : Movie[], movie : Movie) => {
+        function checkIfGenresIncludes() {        
+          return movie.genre_ids.some((id) => {
+            return selectedGenres.includes(id)
+          })
+        }      
+        if(checkIfGenresIncludes()) {
+          acc.push(movie)
+        }
+        return acc    
+      }, [])
+      setMoviesList(selectedMoviesByGenres)
+
+    }
+
   }, [selectedGenres])
 
   return (

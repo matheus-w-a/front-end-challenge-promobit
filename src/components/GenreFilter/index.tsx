@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useMoviesContext } from "../../contexts/moviesContext"
-import { useGenres } from "../../hooks/useGenres"
-import { Box, Content, Label, Toggle} from "./styles"
+import { Box, Content, Label, Genre, GenresContent} from "./styles"
 
 type Genre = {
   id: number;
@@ -15,11 +14,29 @@ type GenreFilterProps = {
   setSelectedGenres: (array : number[]) => void;
 }
 
+type Toggle = {
+  id: Number,
+  isActive: boolean;
+}
+
 export function GenreFilter() {
   const { genresList, selectedGenres, setSelectedGenres, isGenresLoading } = useMoviesContext()
+  const [isActive, setIsActive] = useState<Toggle[]>([])
 
-  function handleGenreSelect(id : number) {
+  useEffect(() => {
+    if(genresList && genresList.length > 1) {
+      const active = genresList.map(genre => {
+        return {id: genre.id, isActive: false}
+      })
+
+      setIsActive(active)
+    }
+    console.log(isActive)
+  },[genresList])
+
+  function handleGenreSelect(id : number, isActiveGenre : Toggle) {
     const genres = [...selectedGenres]
+    isActiveGenre.isActive = isActiveGenre.isActive == false ? true : false
 
     if(!selectedGenres.includes(id)) {
       genres.push(id)
@@ -31,21 +48,24 @@ export function GenreFilter() {
       setSelectedGenres(genres)
 
     }
+    console.log(genres)
+
   }
 
   return (
     <Box>
       <Content>
         <Label>Filtrar por:</Label>
-        <div style={{display: 'flex', flexDirection: 'row', maxWidth: 600}}>
+        <GenresContent>
           {isGenresLoading ? "Carregando" : genresList.map(genre => {
+            const isActiveGenre = isActive.find(g => g.id === genre.id)
             return (
-              <Toggle key={genre.id} onClick={()=>handleGenreSelect(genre.id)} isActive={0}>
+              <Genre key={genre.id} onClick={()=>handleGenreSelect(genre.id, isActiveGenre as any)} isActive={isActiveGenre?.isActive}>
                 {genre.name}
-              </Toggle>
+              </Genre>
             )
           })}
-        </div>
+        </GenresContent>
       </Content>
     </Box>
   )
