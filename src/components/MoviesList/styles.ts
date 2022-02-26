@@ -2,7 +2,7 @@ import { styled } from '../../styles/stitches.config';
 
 export const Content = styled('div', {
   display: 'grid',
-  gridTemplateColumns: 'repeat(6, 1fr)',
+  gridTemplateColumns: 'repeat(5, 1fr)',
   gap: '$5',
   maxWidth: 1400,
   margin: 'auto',
@@ -32,5 +32,5 @@ export const ReleaseDate = styled('h5', {
 })
 
 export const Poster = styled('img', {
-  maxWidth: 180,
+  width: '100%',
 })

@@ -6,7 +6,7 @@ export const Box = styled('div', {
   alignItems: 'center',
   
   backgroundColor: '$purple500',
-  height: 450
+  height: 600
 })
 
 export const Content = styled('div', {
@@ -23,4 +23,8 @@ export const Title = styled('h1', {
   fontSize: 48,
   color: '#ffffff',
   textAlign: 'center'
+})
+
+export const Poster = styled('img', {
+  width: '100%',
 })

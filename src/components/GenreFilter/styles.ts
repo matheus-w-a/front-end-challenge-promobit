@@ -4,8 +4,8 @@ import { styled } from '../../styles/stitches.config';
 export const Box = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  backgroundColor: '$purple400',
-  height: 56
+  backgroundColor: '$purple500',
+  height: 100
 })
 
 export const Content = styled('div', {
@@ -13,35 +13,49 @@ export const Content = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'start',
-  maxWidth: 1200
+  width: '100%',
+  height: '100%',
+  maxWidth: 1200,
+  backgroundColor: '$purple500'
+})
+export const GenresContent = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  rowGap: 12,
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+  maxWidth: 1000,
+  backgroundColor: '$purple500'
 })
 
-export const Toggle = styled('button', {
+export const Genre = styled('button', {
   fontFamily: '$primary !important' ,
   all: 'unset',
   backgroundColor: 'white',
-  color: '$gray500',
   height: 40,
   borderRadius: 4,
   display: 'flex',
   fontSize: 14,
+  fontWeight: 'bold',
   lineHeight: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  mx: 10,
+  mx: 6,
   px: 16,
-  boxShadow: `0 2px 10px`,
   cursor: 'pointer',
   '&:focus': { boxShadow: `0 0 0 2px black` },
   variants:{
     isActive: {
-      0: { backgroundColor: '#ffffff' },
-      1: { backgroundColor: 'gainsboro' },
+      false: { backgroundColor: '#ffffff', color: '$gray500' },
+      true: { backgroundColor: '$orange400', color: 'white'},
     }
   }
 });
 
 export const Label = styled('h3', {
   fontFamily: '$primary',
-  fontSize: 14
+  fontSize: 14,
+  color: '#ffffff'
 })
