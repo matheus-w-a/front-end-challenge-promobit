@@ -5,12 +5,13 @@ import { Banner } from "../Banner";
 import { GenreFilter } from "../GenreFilter";
 import { Box, Content, Poster } from "./styles";
 import { Link, useParams } from "react-router-dom";
-type GenreProps = {
-  id: number;
-  name: string;
+import { MovieDetails } from '../../../types'
+
+type MoviePageHeaderProps = {
+  movieDetails: MovieDetails[]
 }
 
-export function MoviePageHeader() {
+export function MoviePageHeader({movieDetails} : MoviePageHeaderProps) {
   const { id } = useParams()
   console.log(id);
   return (
