@@ -3,7 +3,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
-import { HomePageHeader } from "./components/HomePageHeader";
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { Routes, Route, Link } from "react-router-dom";
 import { Home } from './components/pages/Home';
 import { Movie } from './components/pages/Movie';
@@ -20,6 +20,7 @@ export function App() {
           <Route path="/movie/:id" element={<Movie />} />
         </Routes>
         </MoviesProvider>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </div>
   );

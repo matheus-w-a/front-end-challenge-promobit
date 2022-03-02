@@ -1,6 +1,6 @@
 import { styled } from '../../styles/stitches.config';
 
-export const Box = styled('div', {
+export const Content = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -9,7 +9,7 @@ export const Box = styled('div', {
   height: 450
 })
 
-export const Content = styled('div', {
+export const Box = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

@@ -1,19 +1,21 @@
 import { queryClient } from "../../../services/queryClient";
 import { MoviePageHeader } from "../../MoviePageHeader";
-import { MoviesList } from "../../MoviesList";
 import { useParams } from 'react-router-dom'
 import { MovieDetails } from "../../../../types";
+import { Container } from "./styles";
+import { Cast } from "../../Cast";
 
 export function Movie() {
   const { id } = useParams()
-  const movieDetails = queryClient.getQueryData([`movie-detais-${id}`])
-  console.log(movieDetails)
+  const movieDetails = queryClient.getQueryData([`movie-details-${id}`])
 
   return (
-    <>
-    <MoviePageHeader movieDetails={movieDetails as MovieDetails[]}/>
-
-    </>
+    <Container>
+      <MoviePageHeader movieDetails={movieDetails as MovieDetails}/>
+      <Cast />
+      {/* <Trailer />
+      <Recommendations /> */}
+    </Container>
 
   )
 }

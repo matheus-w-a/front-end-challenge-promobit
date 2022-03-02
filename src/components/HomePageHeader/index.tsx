@@ -4,12 +4,12 @@ import { Box, Content, Title } from "./styles";
 
 export function HomePageHeader() {
   return (
-    <Box>
+    <Content>
       <Banner />
-      <Content>
+      <Box>
         <Title>Milhões de filmes, séries e pessoas para descobrir. Explore já.</Title>
         <GenreFilter/>
-      </Content>
-    </Box>
+      </Box>
+    </Content>
   )
 }

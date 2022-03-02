@@ -4,8 +4,8 @@ import { MoviesList } from "../../MoviesList";
 export function Home() {
   return (
     <>
-    <HomePageHeader />
-    <MoviesList />
+      <HomePageHeader />
+      <MoviesList />
     </>
 
   )
