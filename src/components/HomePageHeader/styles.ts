@@ -1,12 +1,11 @@
 import { styled } from '../../styles/stitches.config';
 
-export const Content = styled('div', {
+export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
-  
+  alignItems: 'center',  
   backgroundColor: '$purple500',
-  height: 450
+
 })
 
 export const Box = styled('div', {
@@ -14,7 +13,7 @@ export const Box = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'start',
-  maxWidth: 1200
+  maxWidth: 1200,
 })
 
 export const Title = styled('h1', {
@@ -22,5 +21,8 @@ export const Title = styled('h1', {
   fontWeight: 700,
   fontSize: 48,
   color: '#ffffff',
-  textAlign: 'center'
+  textAlign: 'center',
+  marginTop: 85,
+  marginBottom: 40
+
 })

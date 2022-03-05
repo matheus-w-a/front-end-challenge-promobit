@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useMoviesContext } from "../../contexts/moviesContext"
-import { Box, Content, Label, Genre, GenresContent} from "./styles"
+import { Container, Content, Label, Genre, GenresContent} from "./styles"
 
 type Genre = {
   id: number;
@@ -53,7 +53,7 @@ export function GenreFilter() {
   }
 
   return (
-    <Box>
+    <Container>
       <Content>
         <Label>Filtrar por:</Label>
         <GenresContent>
@@ -67,6 +67,6 @@ export function GenreFilter() {
           })}
         </GenresContent>
       </Content>
-    </Box>
+    </Container>
   )
 }

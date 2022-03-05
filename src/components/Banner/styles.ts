@@ -16,5 +16,6 @@ export const Content = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'start',
-  maxWidth: 1200
+  maxWidth: 1200,
+  height: 56
 })

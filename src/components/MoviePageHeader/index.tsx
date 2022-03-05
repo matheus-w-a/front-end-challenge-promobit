@@ -22,7 +22,7 @@ export function MoviePageHeader({movieDetails} : MoviePageHeaderProps) {
     <Container>
       <Banner />
       <Content>
-        <Poster src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title}/> 
+        <Poster src={`https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`} alt={movieDetails.title}/> 
         <Box>
           <Title>{movieDetails.title} ({movieDetails.release_date})</Title>
           <div>

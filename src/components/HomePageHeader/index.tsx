@@ -1,15 +1,15 @@
 import { Banner } from "../Banner";
 import { GenreFilter } from "../GenreFilter";
-import { Box, Content, Title } from "./styles";
+import { Box, Container, Title } from "./styles";
 
 export function HomePageHeader() {
   return (
-    <Content>
+    <Container>
       <Banner />
       <Box>
         <Title>Milhões de filmes, séries e pessoas para descobrir. Explore já.</Title>
         <GenreFilter/>
       </Box>
-    </Content>
+    </Container>
   )
 }

@@ -8,3 +8,11 @@ export const Container = styled('div', {
   
   backgroundColor: '$gray300',
 })
+
+export const Box = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+  width: 800,
+  backgroundColor: '$purple500',
+})

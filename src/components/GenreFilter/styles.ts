@@ -1,11 +1,10 @@
 import { styled } from '../../styles/stitches.config';
 
 
-export const Box = styled('div', {
+export const Container = styled('div', {
   display: 'flex',
   alignItems: 'center',
   backgroundColor: '$purple500',
-  height: 100
 })
 
 export const Content = styled('div', {
@@ -25,9 +24,9 @@ export const GenresContent = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
-  height: '100%',
   maxWidth: 1000,
-  backgroundColor: '$purple500'
+  backgroundColor: '$purple500',
+  marginBottom: 85
 })
 
 export const Genre = styled('button', {
@@ -57,5 +56,6 @@ export const Genre = styled('button', {
 export const Label = styled('h3', {
   fontFamily: '$primary',
   fontSize: 14,
-  color: '#ffffff'
+  color: '#ffffff', 
+  marginBottom: 16
 })

@@ -2,9 +2,10 @@ import { queryClient } from "../../../services/queryClient";
 import { MoviePageHeader } from "../../MoviePageHeader";
 import { useParams } from 'react-router-dom'
 import { MovieDetails } from "../../../../types";
-import { Container } from "./styles";
-import { Cast } from "../../Cast";
+import { Container, Box } from "./styles";
+import { CastSection } from "../../Cast";
 import { Recommendations } from "../../Recommendations";
+import { Trailer } from "../../Trailer";
 
 export function Movie() {
   const { id } = useParams()
@@ -13,8 +14,8 @@ export function Movie() {
   return (
     <Container>
       <MoviePageHeader movieDetails={movieDetails as MovieDetails}/>
-      <Cast />
-       {/* <Trailer /> */}
+      <CastSection />
+      <Trailer />
       <Recommendations /> 
     </Container>
 

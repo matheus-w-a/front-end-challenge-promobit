@@ -1,5 +1,6 @@
 import { createStitches } from '@stitches/react';
 
+
 export const {
   styled,
   css,
@@ -41,4 +42,8 @@ export const {
     px: (value: number) => ({ paddingRight: value, paddingLeft: value }),
     py: (value: number) => ({ paddingTop: value, paddingBottom: value }),
   },
+});
+
+export const globalStyles = globalCss({
+  '*': { margin: 0, padding: 0, boxSizing: 'border-box' },
 });
