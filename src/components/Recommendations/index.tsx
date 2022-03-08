@@ -15,7 +15,7 @@ export function Recommendations() {
       <RecommendationContent>
         {recommendations.results.map(recom => {
           return (
-            <Link to={`/movie/${recom.id}`} onMouseEnter={() => handlePrefetchMovie(Number(recom.id))}>
+            <Link to={`/movie/${recom.id}`} onMouseEnter={() => handlePrefetchMovie(Number(recom.id))} style={{textDecoration: 'none'}}>
               <Recommendation key={recom.id}>
                 <Poster src={`https://image.tmdb.org/t/p/w200${recom.poster_path}`}/>
                 <h3>{recom.title}</h3>

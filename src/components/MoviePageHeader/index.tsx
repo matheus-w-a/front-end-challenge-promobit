@@ -6,6 +6,7 @@ import { GenreFilter } from "../GenreFilter";
 import { Container, Content, Poster, Box, Title, UserRating, Synopsis } from "./styles";
 import { Link, useParams } from "react-router-dom";
 import { MovieDetails } from '../../../types'
+import { Crew } from "../Crew";
 
 type MoviePageHeaderProps = {
   movieDetails: MovieDetails
@@ -38,6 +39,7 @@ export function MoviePageHeader({movieDetails} : MoviePageHeaderProps) {
             <h3>Sinopse</h3>
             <p>{movieDetails.overview}</p>
           </Synopsis>
+          <Crew />
         </Box>
       </Content>
     </Container>

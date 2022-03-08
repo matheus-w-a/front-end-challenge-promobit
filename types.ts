@@ -99,7 +99,7 @@ export interface CastProps {
     department: string;
     job: string;
   }[]
-}
+} []
 
 export interface TrailerProps {
   id: number;

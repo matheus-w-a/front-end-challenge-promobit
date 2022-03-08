@@ -12,12 +12,14 @@ export function Movie() {
   const movieDetails = queryClient.getQueryData([`movie-details-${id}`])
 
   return (
+    movieDetails ?
     <Container>
       <MoviePageHeader movieDetails={movieDetails as MovieDetails}/>
       <CastSection />
       <Trailer />
       <Recommendations /> 
-    </Container>
+    </Container> :
+    <h1>loading</h1> 
 
   )
 }

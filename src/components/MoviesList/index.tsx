@@ -13,7 +13,7 @@ export function MoviesList() {
       moviesList.map(movie =>{
         const banner = movie.poster_path ? movie.poster_path : ""
         return (
-          <Link to={`/movie/${movie.id}`} onMouseEnter={() => handlePrefetchMovie(movie.id)}>
+          <Link to={`/movie/${movie.id}`} onMouseEnter={() => handlePrefetchMovie(movie.id)} style={{textDecoration: 'none'}}>
             <Movie key={movie.id}>
               <Poster src={`https://image.tmdb.org/t/p/w500${banner}`} alt={movie.original_title}/>
               <Title>
@@ -26,7 +26,7 @@ export function MoviesList() {
           </Link>
 
         )})
-      : 'ola'
+      : <h1>'ola'</h1>
       }
     </Content>
 
