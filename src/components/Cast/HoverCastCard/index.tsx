@@ -24,8 +24,9 @@ export function HoverCastCard({castMovie} : HoverCastCardProps) {
   useEffect(() => {
     if(personData) {
       const personConstructor = {
-        birthday: personData.birthday ? personData.birthday.split('-').reverse().join('/') : ''
-
+        birthday: personData.birthday ? personData.birthday.split('-').reverse().join('/') : '',
+        place_of_birth: personData.place_of_birth ? personData.place_of_birth : '',
+        biography: personData.biography ? personData.biography : ''
       }
       console.log(personConstructor)
         setPerson(personConstructor)
@@ -42,7 +43,7 @@ export function HoverCastCard({castMovie} : HoverCastCardProps) {
             setPersonId(cast.id)
             handleFetchPerson(cast.id)
           }} asChild>
-          <ImageTrigger href="https://twitter.com/radix_ui" target="_blank" rel="noreferrer noopener">
+          <ImageTrigger>
             <Poster src={`https://image.tmdb.org/t/p/w200${cast.profile_path}`}/>
             <h3>{cast.name}</h3>
             <h4>{cast.character}</h4>
@@ -54,10 +55,10 @@ export function HoverCastCard({castMovie} : HoverCastCardProps) {
               <Text>
                 <Text bold>{cast.name}</Text>
                 <Text faded>Data de nacimento: {person.birthday}</Text>
+                <Text faded>Local de nacimento: {person.place_of_birth}</Text>
               </Text>
               <Text>
-                Components, icons, colors, and templates for building high-quality, accessible UI. Free
-                and open-source.
+                {person.biography}
               </Text>
               <Flex css={{ gap: 15 }}>
                 <Flex css={{ gap: 5 }}>

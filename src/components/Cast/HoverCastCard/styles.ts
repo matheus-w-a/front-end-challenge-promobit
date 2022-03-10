@@ -24,6 +24,7 @@ export const slideLeftAndFade = keyframes({
 });
 
 export const StyledContent = styled(HoverCardPrimitive.Content, {
+  fontFamily: '$primary !important',
   borderRadius: 6,
   padding: 20,
   width: 300,
@@ -49,9 +50,9 @@ export const StyledArrow = styled(HoverCardPrimitive.Arrow, {
 
 export const Flex = styled('div', { display: 'flex' });
 
-export const ImageTrigger = styled('a', {
+export const ImageTrigger = styled('div', {
+  fontFamily: '$primary',
   all: 'unset',
-  cursor: 'pointer',
   borderRadius: '100%',
   display: 'inline-block',
   '&:focus': { boxShadow: `0 0 0 2px white` },
@@ -72,16 +73,17 @@ export const Img = styled('img', {
 });
 
 export const Text = styled('div', {
+  fontFamily: '$primary',
   margin: 0,
-  color: '$purple400',
+  color: '$gray500',
   fontSize: 15,
   lineHeight: 1.5,
   variants: {
     faded: {
-      true: { color: '$purple400' },
+      true: { color: '$gray400' },
     },
     bold: {
-      true: { fontWeight: 500 },
+      true: { fontWeight: 700 },
     },
   },
 });
