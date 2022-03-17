@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { CastProps, PersonProps } from '../../../../types';
 import { handleFetchPerson } from '../../../hooks/usePerson';
 import { queryClient } from '../../../services/queryClient';
-import { Flex, ImageTrigger, Img, Poster, StyledArrow, StyledContent, Text } from './styles';
+import { Flex, ImageTrigger, Poster, StyledArrow, StyledContent, Text } from './styles';
 
 export const HoverCard = HoverCardPrimitive.Root;
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
@@ -49,25 +49,19 @@ export function HoverCastCard({castMovie} : HoverCastCardProps) {
             <h4>{cast.character}</h4>
           </ImageTrigger>
         </HoverCardTrigger>
-        <HoverCardContent sideOffset={5}>
+        <HoverCardContent side={'right'} sideOffset={5}>
           <Flex css={{ flexDirection: 'column', gap: 7 }}>
             <Flex css={{ flexDirection: 'column', gap: 15 }}>
               <Text>
                 <Text bold>{cast.name}</Text>
-                <Text faded>Data de nacimento: {person.birthday}</Text>
-                <Text faded>Local de nacimento: {person.place_of_birth}</Text>
+                <Text faded>Data de nacimento:</Text> 
+                <Text bold>{person.birthday}</Text>                  
+                <Text faded>Local de nacimento:</Text>
+                <Text bold>{person.place_of_birth}</Text>
               </Text>
               <Text>
                 {person.biography}
-              </Text>
-              <Flex css={{ gap: 15 }}>
-                <Flex css={{ gap: 5 }}>
-                  <Text bold>0</Text> <Text faded>Following</Text>
-                </Flex>
-                <Flex css={{ gap: 5 }}>
-                  <Text bold>2,900</Text> <Text faded>Followers</Text>
-                </Flex>
-              </Flex>
+              </Text>              
             </Flex>
           </Flex>
           <HoverCardArrow />

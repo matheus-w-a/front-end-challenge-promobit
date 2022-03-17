@@ -53,7 +53,6 @@ export const Flex = styled('div', { display: 'flex' });
 export const ImageTrigger = styled('div', {
   fontFamily: '$primary',
   all: 'unset',
-  borderRadius: '100%',
   display: 'inline-block',
   '&:focus': { boxShadow: `0 0 0 2px white` },
 });
