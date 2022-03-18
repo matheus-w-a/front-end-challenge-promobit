@@ -2,7 +2,13 @@ import { Link, useParams } from "react-router-dom"
 import { MovieRecomendations } from "../../../types"
 import { handlePrefetchMovie } from "../../hooks/useMovieDetails"
 import { queryClient } from "../../services/queryClient"
-import { Container, Poster, Recommendation, RecommendationContent } from "./styles"
+import { Poster, Recommendation, StyledScrollArea, StyledViewport, StyledScrollbar, StyledThumb, StyledCorner, Box } from "./styles"
+
+const ScrollArea = StyledScrollArea;
+const ScrollAreaViewport = StyledViewport;
+const ScrollAreaScrollbar = StyledScrollbar;
+const ScrollAreaThumb = StyledThumb;
+const ScrollAreaCorner = StyledCorner;
 
 export function Recommendations() {
   const {id} = useParams()
@@ -10,9 +16,11 @@ export function Recommendations() {
   console.log(recommendations)
   return (
     recommendations ?
-    <Container>
-      <h1>Recomendações</h1>
-      <RecommendationContent>
+    <ScrollArea>
+        <h1>Recomendações</h1>
+
+      <ScrollAreaViewport>
+        <Box>
         {recommendations.results.map(recom => {
           return (
             <Link to={`/movie/${recom.id}`} onMouseEnter={() => handlePrefetchMovie(Number(recom.id))} style={{textDecoration: 'none'}}>
@@ -24,10 +32,13 @@ export function Recommendations() {
             </Link>
           )
         })}
-      </RecommendationContent>
-
-      
-    </Container> :
+        </Box>
+      </ScrollAreaViewport>
+      <ScrollAreaScrollbar orientation="horizontal">
+        <ScrollAreaThumb />
+      </ScrollAreaScrollbar>
+      <ScrollAreaCorner />
+    </ScrollArea> :
     <h1>'loading'</h1>
   )
 }

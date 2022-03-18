@@ -37,8 +37,17 @@ export const {
     bp1: '(min-width: 480px)',
   },
   utils: {
+    mb: (value: number) => ({ marginBottom: value }),
+    mt: (value: number) => ({ marginTop: value }),
+    ml: (value: number) => ({ marginLeft: value}),
+    mr: (value: number) => ({  marginRight: value }),
     mx: (value: number) => ({ marginLeft: value, marginRight: value }),
     my: (value: number) => ({ marginTop: value, marginBottom: value }),
+
+    pb: (value: number) => ({ paddingBottom: value }),
+    pt: (value: number) => ({ paddingTop: value }),
+    pl: (value: number) => ({ paddingLeft: value}),
+    pr: (value: number) => ({  paddingRight: value }),
     px: (value: number) => ({ paddingRight: value, paddingLeft: value }),
     py: (value: number) => ({ paddingTop: value, paddingBottom: value }),
   },

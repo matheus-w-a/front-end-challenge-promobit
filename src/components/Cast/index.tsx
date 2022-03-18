@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { CastProps } from "../../../types"
 import { queryClient } from "../../services/queryClient"
 import { HoverCastCard } from "./HoverCastCard"
-import { Container, CastContent, Cast, Poster, StyledScrollArea, StyledViewport, StyledScrollbar, StyledThumb, StyledCorner, Box, Text, Tag } from "./styles"
+import { StyledScrollArea, StyledViewport, StyledScrollbar, StyledThumb, StyledCorner, Box } from "./styles"
 
 const ScrollArea = StyledScrollArea;
 const ScrollAreaViewport = StyledViewport;
@@ -16,9 +16,10 @@ export function CastSection() {
   return (
     castMovie ?
     <ScrollArea>
-      <ScrollAreaViewport css={{ backgroundColor: 'white' }}>
         <h1>Elenco original</h1>
-        <Box style={{ padding: '15px 20px' }}>
+
+      <ScrollAreaViewport>
+        <Box>
           <HoverCastCard castMovie={castMovie}/>
         </Box>
       </ScrollAreaViewport>
