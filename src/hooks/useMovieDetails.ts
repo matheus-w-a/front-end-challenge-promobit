@@ -50,4 +50,19 @@ export async function handlePrefetchMovie(movieId: number) {
   }, {
     staleTime: 1000 * 60 * 60 * 24 // 24h
   })
+
+  await queryClient.prefetchQuery(`movie-release-date-${movieId}`, async () => {
+    const response = await api.get(`https://api.themoviedb.org/3/movie/${movieId}/release_dates`,{ 
+      params: {
+        api_key: '9baa61702a8d467f8d5fc73f4bd173ee',
+        language: 'pt-BR'
+      }
+    })
+    const data = await response.data.results
+    const test =  await data.filter((v : any)=> {return v.iso_3166_1 === 'BR'})
+    console.log(test)
+    return test
+  }, {
+    staleTime: 1000 * 60 * 60 * 24 // 24h
+  })
 }

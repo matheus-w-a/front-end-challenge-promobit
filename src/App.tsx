@@ -1,12 +1,11 @@
 import {
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { Routes, Route, Link } from "react-router-dom";
-import { Home } from './components/pages/Home';
-import { Movie } from './components/pages/Movie';
+import { Routes, Route } from "react-router-dom";
+import { Home } from './pages/Home';
+import { Movie } from './pages/Movie';
 import { MoviesProvider } from './contexts/moviesContext';
 import { globalStyles } from './styles/stitches.config';
 

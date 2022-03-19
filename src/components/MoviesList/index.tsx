@@ -13,14 +13,14 @@ export function MoviesList() {
       moviesList.map(movie =>{
         const banner = movie.poster_path ? movie.poster_path : ""
         return (
-          <Link to={`/movie/${movie.id}`} onMouseEnter={() => handlePrefetchMovie(movie.id)} style={{textDecoration: 'none'}}>
+          <Link key={movie.id} to={`/movie/${movie.id}`} onMouseEnter={() => handlePrefetchMovie(movie.id)} style={{textDecoration: 'none'}}>
             <Movie key={movie.id}>
               <Poster src={`https://image.tmdb.org/t/p/w500${banner}`} alt={movie.original_title}/>
               <Title>
                 {movie.title}
               </Title>
               <ReleaseDate>
-                {movie.release_date}
+                {movie.release_date.split('-').reverse().join('/')}
               </ReleaseDate>
             </Movie>
           </Link>

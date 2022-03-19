@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 import { CastProps, PersonProps } from '../../../../types';
 import { handleFetchPerson } from '../../../hooks/usePerson';
 import { queryClient } from '../../../services/queryClient';
-import { Flex, ImageTrigger, Poster, StyledArrow, StyledContent, Text } from './styles';
+import { Flex, ImageTrigger, Poster, StyledArrow, StyledContent, Text, HoverCardTrigger } from './styles';
 
 export const HoverCard = HoverCardPrimitive.Root;
-export const HoverCardTrigger = HoverCardPrimitive.Trigger;
 export const HoverCardContent = StyledContent;
 export const HoverCardArrow = StyledArrow;
 
@@ -19,7 +18,6 @@ export function HoverCastCard({castMovie} : HoverCastCardProps) {
   const [person, setPerson] = useState({} as PersonProps)
   const [personId, setPersonId] = useState(0)
   const personData = queryClient.getQueryData(`person-details-${personId}`) as PersonProps
-  console.log(personData)
   
   useEffect(() => {
     if(personData) {
@@ -28,7 +26,6 @@ export function HoverCastCard({castMovie} : HoverCastCardProps) {
         place_of_birth: personData.place_of_birth ? personData.place_of_birth : '',
         biography: personData.biography ? personData.biography : ''
       }
-      console.log(personConstructor)
         setPerson(personConstructor)
     }
   }, [personData])

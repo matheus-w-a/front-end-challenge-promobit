@@ -31,7 +31,6 @@ export function GenreFilter() {
 
       setIsActive(active)
     }
-    console.log(isActive)
   },[genresList])
 
   function handleGenreSelect(id : number, isActiveGenre : Toggle) {
@@ -48,8 +47,6 @@ export function GenreFilter() {
       setSelectedGenres(genres)
 
     }
-    console.log(genres)
-
   }
 
   return (

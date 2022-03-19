@@ -13,7 +13,6 @@ const ScrollAreaCorner = StyledCorner;
 export function Recommendations() {
   const {id} = useParams()
   const recommendations = queryClient.getQueryData(`movie-recommendations-${id}`) as MovieRecomendations
-  console.log(recommendations)
   return (
     recommendations ?
     <ScrollArea>
@@ -23,7 +22,7 @@ export function Recommendations() {
         <Box>
         {recommendations.results.map(recom => {
           return (
-            <Link to={`/movie/${recom.id}`} onMouseEnter={() => handlePrefetchMovie(Number(recom.id))} style={{textDecoration: 'none'}}>
+            <Link key={recom.id} to={`/movie/${recom.id}`} onMouseEnter={() => handlePrefetchMovie(Number(recom.id))} style={{textDecoration: 'none'}}>
               <Recommendation key={recom.id}>
                 <Poster src={`https://image.tmdb.org/t/p/w200${recom.poster_path}`}/>
                 <h3>{recom.title}</h3>

@@ -17,7 +17,6 @@ export function CastSection() {
     castMovie ?
     <ScrollArea>
         <h1>Elenco original</h1>
-
       <ScrollAreaViewport>
         <Box>
           <HoverCastCard castMovie={castMovie}/>

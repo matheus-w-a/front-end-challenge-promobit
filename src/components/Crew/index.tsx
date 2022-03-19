@@ -24,7 +24,6 @@ export function Crew(){
      }
      return acc
     }, [] as any)
-    console.log(productorsData)
     setProductors(productorsData)
 
     const directorsData = crew.crew.reduce((acc ,crew) => {
@@ -34,9 +33,8 @@ export function Crew(){
       }
       return acc
      }, [] as any)
-     console.log(directorsData)
      setDirectors(directorsData)
-  }, [])
+  }, [crew])
 
   return  (
     <Container>
@@ -50,7 +48,7 @@ export function Crew(){
         <Collapsible.Content>
           {productors.map(productor => {
             return (
-              <Repository>
+              <Repository key={productor}>
                 <Text>{productor}</Text>
               </Repository>
             )
@@ -69,7 +67,7 @@ export function Crew(){
           <Box>
             {directors.map(director => {
                 return (
-                  <Repository>
+                  <Repository key={director}>
                     <Text>{director}</Text>
                   </Repository>
                 )

@@ -48,13 +48,28 @@ export const StyledArrow = styled(HoverCardPrimitive.Arrow, {
   fill: 'white',
 });
 
+export const HoverCardTrigger = styled(HoverCardPrimitive.Trigger, {
+  mr: 16,
+  mb: 8,
+  padding: 8,
+  borderRadius: 4,
+  boxShadow: '0px 4px 4px 0px #00000040',
+  backgroundColor: 'white',
+});
+
 export const Flex = styled('div', { display: 'flex' });
 
 export const ImageTrigger = styled('div', {
   fontFamily: '$primary',
-  all: 'unset',
   display: 'inline-block',
   '&:focus': { boxShadow: `0 0 0 2px white` },
+  h3: {
+    mt: 8,
+  },
+  h4: {
+    mt: 4,
+    fontWeight: 'normal'
+  }
 });
 
 export const Img = styled('img', {
@@ -89,10 +104,9 @@ export const Text = styled('div', {
 
 
 export const Poster = styled('img', {
-  backgroundSize: 'cover',
+  backgroundSize: 'contain !important',
   width: 175,
   maxHeight: 222,
-  marginRight: 32,
   borderRadius: 8,
   boxShadow: '0px 4px 4px 0px #00000040',
 })

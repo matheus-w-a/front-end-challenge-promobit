@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
-import { useMoviesContext } from "../../contexts/moviesContext";
-import { useGenres } from "../../hooks/useGenres";
 import { Banner } from "../Banner";
-import { GenreFilter } from "../GenreFilter";
 import { Container, Content, Poster, Box, Title, UserRating, Synopsis } from "./styles";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { MovieDetails } from '../../../types'
 import { Crew } from "../Crew";
+import { queryClient } from "../../services/queryClient";
 
-type MoviePageHeaderProps = {
-  movieDetails: MovieDetails
-}
 
-export function MoviePageHeader({movieDetails} : MoviePageHeaderProps) {
+export function MoviePageHeader() {
   const { id } = useParams()
+  const movieDetails = queryClient.getQueryData([`movie-details-${id}`]) as MovieDetails
+  const movieReleaseDate = queryClient.getQueryData([`movie-release-date-${id}`]) as any
+  const releaseDate = movieReleaseDate[0].release_dates[0].release_date
+  const ageGroup = movieReleaseDate[0].release_dates[0].certification
+
 
   const movieRuntime = movieDetails.runtime ? 
     `${Math.floor(movieDetails.runtime / 60)}h:${movieDetails.runtime % 60}min` 
@@ -27,9 +26,9 @@ export function MoviePageHeader({movieDetails} : MoviePageHeaderProps) {
         <Box>
           <Title>{movieDetails.title} ({movieDetails.release_date})</Title>
           <div>
-            {movieDetails.release_date} - 
-            {movieDetails.genres.map(genre => (`${genre.name}, `))} - 
-            {movieRuntime}
+            {movieDetails.release_date.split('-').reverse().join('/')} - 
+            {movieDetails.genres.map(genre => (` ${genre.name}`))} - 
+            {` ${movieRuntime}`}
           </div>
           <UserRating>
             <p>{movieDetails.vote_average}</p>

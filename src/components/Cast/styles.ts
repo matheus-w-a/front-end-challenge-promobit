@@ -3,7 +3,8 @@ import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 
 export const Box = styled('div', {
   display: 'flex',
-  height: 400,
+  height: 'auto',
+  mb: 10
 });
 export const Text = styled('div', {
   color: '$purple400',
@@ -22,9 +23,9 @@ export const SCROLLBAR_SIZE = 12;
 
 export const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
   width: 1236,
-  height: 400,
+  height: 'auto',
   borderRadius: 4,
-  marginTop: 80,
+  marginTop: 60,
   overflow: 'hidden',
   backgroundColor: '$gray300',
 
@@ -55,7 +56,7 @@ export const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   padding: 2,
   background: '$gray300',
   transition: 'background 160ms ease-out',
-  '&:hover': { background: '$gray300' },
+  '&:hover': { background: '#DDDDDD' },
   '&[data-orientation="vertical"]': { width: SCROLLBAR_SIZE },
   '&[data-orientation="horizontal"]': {
     flexDirection: 'column',
@@ -65,7 +66,7 @@ export const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
 
 export const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
   flex: 1,
-  background: '$gray400',
+  background: '#ADADAD',
   borderRadius: SCROLLBAR_SIZE,
   // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
   position: 'relative',

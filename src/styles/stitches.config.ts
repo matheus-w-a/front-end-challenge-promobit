@@ -37,6 +37,7 @@ export const {
     bp1: '(min-width: 480px)',
   },
   utils: {
+    m: (value: number) => ({ marginLeft: value, marginRight: value, marginTop: value, marginBottom: value}),
     mb: (value: number) => ({ marginBottom: value }),
     mt: (value: number) => ({ marginTop: value }),
     ml: (value: number) => ({ marginLeft: value}),

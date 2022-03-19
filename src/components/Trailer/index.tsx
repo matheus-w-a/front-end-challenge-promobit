@@ -6,7 +6,6 @@ import { Container } from "./styles";
 export function Trailer() {
   const { id } = useParams()
   const trailers = queryClient.getQueryData(`movie-videos-${id}`) as TrailerProps
-  console.log(trailers)
 
   return (
     trailers ? <Container>

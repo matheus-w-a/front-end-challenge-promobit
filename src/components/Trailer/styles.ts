@@ -5,12 +5,12 @@ export const Container = styled('div', {
   flexDirection: 'column',
   alignItems: 'start',
   width: '100%',
-  maxWidth: 1300,
+  maxWidth: 1236,
 
   h1: {
     fontFamily: '$primary',
     fontSize: 28,
-    marginTop: 40,
+    marginTop: 60,
     marginBottom: 24
   }
 })
